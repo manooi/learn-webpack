@@ -30,6 +30,18 @@ module.exports = {
           'style-loader',
           'css-loader',
           'sass-loader']
+      },
+
+      // to be backward compatible with old browsers
+      {
+        test: /].js$/,
+        exclude: /node_modules/,
+        use: {
+          loader: 'babel-loader',
+          options: {
+            preset: ['@babel/preset-env']
+          }
+        }
       }
     ]
   },
