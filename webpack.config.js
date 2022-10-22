@@ -9,7 +9,8 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: '[name].[contenthash].js',
-    clean: true
+    clean: true,
+    assetModuleFilename: '[name][ext]' // to keep the original file name
   },
   devtool: 'source-map',
   devServer:{
@@ -42,6 +43,12 @@ module.exports = {
             preset: ['@babel/preset-env']
           }
         }
+      },
+
+      // asset
+      {
+        test: /\.(png|svg|jpeg|jpg|gif)$/i,
+        type: 'asset/resource'
       }
     ]
   },
